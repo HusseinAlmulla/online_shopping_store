@@ -10,7 +10,6 @@ class CardsList extends React.Component {
 					this.props.data.map(item => (
 						<ProductCard item={item}/>))
 				}
-
 			</div>
 		)
 	}
