@@ -8,36 +8,39 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
+	root: {
+		flexGrow: 1,
+	},
+	menuButton: {
+		marginRight: theme.spacing(2),
+	},
+	logo: {
+		flexGrow: 1,
+		fontFamily: 'Norican',
+		fontSize: '40px',
+	},
 }));
 
 export default function ButtonAppBar() {
-  const classes = useStyles();
+	const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
+	return (
+		<div className={classes.root}>
+			<AppBar position="fixed">
+				<Toolbar>
+					<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+						<MenuIcon />
+					</IconButton>
+					<Typography variant="h6" className={classes.logo}>
+						OZO
+
           </Typography>
-		  {/* These should be components. The logout should appear only when the user login */}
-          <Button color="inherit">Login</Button>
-		  <Button color="inherit">Register</Button>
-		  <Button color="inherit">Logout</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+					{/* These should be components. The logout should appear only when the user login */}
+					<Button color="inherit">Login</Button>
+					<Button color="inherit">Register</Button>
+					<Button color="inherit">Logout</Button>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
 }
