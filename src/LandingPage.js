@@ -16,7 +16,7 @@ import Footer from './Components/Footer';
         <NavBar2/> {/* new navigation bar with serch window */}
         <Home/>   {/* welcome text with background image */}
         <Welcome/> {/* welcome text with shopping button*/}
-        <Footer/>
+        <Footer/> {/* test git */}
       </div>
     );
   }
