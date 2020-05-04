@@ -16,8 +16,4 @@ class CardsList extends React.Component {
 }
 
 
-
-
-
-
 export default CardsList;
