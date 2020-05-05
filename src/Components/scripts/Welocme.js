@@ -1,8 +1,8 @@
 import React from "react";
-import './Home.css';
+import '../styles/Home.css';
 
 
-const Home = () => {
+const Welocme = () => {
   return (
       <div className="bg">
 
@@ -11,8 +11,9 @@ const Home = () => {
           <h1 class="display-2">Welcome to our store </h1>
           <h1 class="display-3">Welcome to our store </h1>
           <h1 class="display-4">Welcome to our store </h1>
+          
       </div>
   );
 }
 
-export default Home;
+export default Welocme;

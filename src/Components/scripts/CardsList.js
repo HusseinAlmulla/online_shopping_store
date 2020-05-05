@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard.js';
-import './ProductCard.css'
+import '../styles/ProductCard.css'
 
 class CardsList extends React.Component {
 	render() {
