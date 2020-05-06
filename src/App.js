@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CardsList from './Components/scripts/CardsList.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar2 from './Components/scripts/NavBar2';
+import NavBar2 from './Components/scripts/NavBar';
 import Footer from './Components/scripts/Footer.js';
 import Cover from './Components/scripts/Cover.js';
 import Welcome from './Components/scripts/Welocme.js';

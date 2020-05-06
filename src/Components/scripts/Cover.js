@@ -7,8 +7,6 @@ import '../styles/Cover.css';
 function Cover({handler}) {
     return (
         <div className="hero-image" >
-            <h1> Welcome to our store</h1>
-
             <h1 className='text-center'> ...</h1>
 
             <div className='text-center bg-danger'>
@@ -20,12 +18,9 @@ function Cover({handler}) {
                     Start Shopping
                 </button>
             </div>
-
+            
             <h1 className='text-center'> ...</h1>
-
             <button>Hire me</button>
-
-
         </div >
     )
 }
