@@ -17,9 +17,9 @@ class Register extends Component {
 					<h3 className="h3">Register</h3>
 					<hr className="line" />
 					
-					<Form >
+					<Form className="AnonymousPro-font">
 						<Form.Group>
-							<Form.Label>Username</Form.Label>
+							<Form.Label >Username</Form.Label>
 							<Form.Control type="text" placeHolder="Enter username" />
 							<Form.Text>The username must unique.</Form.Text>
 						</Form.Group>
