@@ -3,11 +3,11 @@ import '../styles/Home.css';
 import Welcome from './Welocme';
 import Cover from './Cover.js';
 
-const Welocme = () => {
+const Welocme = ({handler}) => {
     return (
         <div >
             <Welcome />
-            <Cover handler={this.handler} />
+            <Cover handler={handler} />
         </div>
     );
 }

@@ -38,7 +38,7 @@ class App extends Component {
           {
             this.state.whichComponentToShow === 'landingPage' ?
               <div>
-                <Home/>
+                <Home handler={this.handler} />
               </div>
               : <CardsList data={data} />
           }
