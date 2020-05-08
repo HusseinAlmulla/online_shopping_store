@@ -3,13 +3,13 @@ import '../styles/Home.css';
 import Welcome from './Welocme';
 import Cover from './Cover.js';
 
-const Welocme = ({handler}) => {
+const LandingPage = () => {
     return (
         <div >
             <Welcome />
-            <Cover handler={handler} />
+            <Cover/>
         </div>
     );
 }
 
-export default Welocme;
+export default LandingPage;

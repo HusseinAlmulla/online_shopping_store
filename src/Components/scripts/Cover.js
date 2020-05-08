@@ -1,5 +1,6 @@
 import React from 'react'
-// import header from '../../Images/header.jpg';
+import {Link} from 'react-router-dom';
+
 import '../styles/Cover.css';
 
 
@@ -14,9 +15,9 @@ function Cover({handler}) {
                     Explore Our Shope
                 </h1>
 
-                <button type="button" className="btn btn-primary" onClick={() => handler('CardsList')}>
+                <Link type="button" className="btn btn-primary"  to='/products'>
                     Start Shopping
-                </button>
+                </Link>
             </div>
             
             <h1 className='text-center'> ...</h1>
