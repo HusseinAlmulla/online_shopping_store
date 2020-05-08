@@ -1,0 +1,25 @@
+[
+	{
+	  "userid": 1,
+	  "username": "user1",
+	  "email": "user1@email.com",
+	  "password": "user1",
+	  "dateJoin": "5/5/2020"
+	},
+	{
+		"userid": 2,
+		"username": "user2",
+		"email": "user2@email.com",
+		"password": "user2",
+		"dateJoin": "5/6/2020"
+	  },
+	  {
+		"userid": 3,
+		"username": "user3",
+		"email": "user3@email.com",
+		"password": "user3",
+		"dateJoin": "5/3/2020"
+	  }
+  ]
+
+  
