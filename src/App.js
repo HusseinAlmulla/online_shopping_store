@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import CardsList from './Components/scripts/CardsList.js';
 import NavBar2 from './Components/scripts/NavBar';
 import Footer from './Components/scripts/Footer.js';
-import Home from './Components/scripts/Home.js';
+import LandingPage from './Components/scripts/LandingPage.js';
 import Register from './Components/scripts/Register.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,17 +34,12 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <NavBar2 handler={this.handler} />
-          <Route exact path="/register" component={Register}/>
-          {
-            this.state.whichComponentToShow === 'landingPage' ?
-              <div>
-                <Home handler={this.handler} />
-              </div>
-              : <CardsList data={data} />
-          }
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/products" render={(props) => <CardsList {...props} data={data} />} />
           <Footer />
         </BrowserRouter>
-      </div>
+      </div >
     );
   }
 }
