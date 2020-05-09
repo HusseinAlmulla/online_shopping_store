@@ -1,0 +1,47 @@
+
+-- Create the datebase
+
+-- Database: oss_db
+
+-- DROP DATABASE oss_db;
+
+CREATE DATABASE oss_db
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+------------------------------------------------
+------------------------------------------------
+
+
+--Create the needed table
+
+-- Table: public.register
+
+-- DROP TABLE public.register;
+
+CREATE TABLE public.register
+(
+    id integer NOT NULL DEFAULT nextval('register_id_seq'::regclass),
+    username character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    first_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(150) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    date_birth date NOT NULL,
+    joined date,
+    CONSTRAINT register_pkey PRIMARY KEY (id),
+    CONSTRAINT unique_email UNIQUE (email),
+    CONSTRAINT unique_username UNIQUE (username)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.register
+    OWNER to postgres;
