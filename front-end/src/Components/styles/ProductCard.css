@@ -11,7 +11,7 @@
     grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
 }
 
-.priceLabel {
+.footerLabel {
     color:dodgerblue;
     font-size: 18px;
 }
