@@ -6,6 +6,7 @@ import NavBar from './Components/scripts/NavBar';
 import Footer from './Components/scripts/Footer.js';
 import LandingPage from './Components/scripts/LandingPage.js';
 import Register from './Components/scripts/Register.js';
+import ProductDetails from './Components/scripts/ProductDetails.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -27,9 +28,7 @@ class App extends Component {
       }
     }
   };
-getUsername(){
-  return this.state;
-}
+
   setUser = (data) => {
     this.setState({
       user: {
@@ -54,7 +53,8 @@ getUsername(){
           <NavBar username={this.state.user.username}/>
           <Route exact path="/register" render={(props) => <Register {...props} setUser={this.setUser} />} />
           <Route exact path="/" component={LandingPage} />
-          <Route path="/products" render={(props) => <CardsList {...props} data={data} />} />
+          <Route exact path="/products" render={(props) => <CardsList {...props} data={data} />} />
+          <Route exact path="/products/:id" component={ProductDetails} />
           <Footer />
         </BrowserRouter>
       </div >
