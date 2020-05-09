@@ -1,0 +1,44 @@
+.container{
+	justify-content: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 10px;
+	padding-right:10px;
+}
+
+.btn {	
+	margin-left: 40%;
+	margin-bottom: 10px;
+}
+
+.col {	
+	border-radius: 15px 50px;
+	background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+	/* background-color: gainsboro; */
+}
+
+.h3 {
+	text-align: center;
+	color: blueviolet;
+	font-family: AnonymousPro;
+	font-size: 40px;
+}
+
+@font-face{
+    font-family: 'AnonymousPro-Bold', cursive;;
+    src: local('AnonymousPro'), url('../fonsts/AnonymousPro-Bold.ttf').format('ttf');
+}
+
+.line{
+	border-color: brown;
+    height: .9;;
+}
+
+.icon {
+	float: right;
+}
+
+.name {
+	width: 50%;
+	float: left;
+}
