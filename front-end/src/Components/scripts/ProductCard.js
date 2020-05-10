@@ -41,7 +41,7 @@ class ProductCard extends React.Component {
 							</Link>
 						</Typography>
 						<Typography variant="body2" color="textSecondary" component="p">
-							{item.desc}
+							{item.longTitle}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
