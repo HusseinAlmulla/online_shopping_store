@@ -19,3 +19,15 @@ li{
    	position: absolute;
     bottom: 0;
 }
+
+.sizeBtn{
+	margin: 5px;
+	/* background-color: white !important;
+	color: #b8adad !important; */
+	
+}
+.sizeSection{
+	position: relative;
+    top: 30px;
+}
+
