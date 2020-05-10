@@ -1,5 +1,4 @@
 
-
 .container{
 	justify-content: center;
 	padding-top: 30px;
@@ -8,9 +7,15 @@
 	padding-right:10px;
 }
 
-.rightCol{
-	float: right;
-}
 li{
 	list-style: none
+}
+
+.desc {
+	margin: 23px;
+}
+
+.addToCart{
+   	position: absolute;
+    bottom: 0;
 }

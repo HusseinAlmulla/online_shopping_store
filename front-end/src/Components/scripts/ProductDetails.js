@@ -29,7 +29,7 @@ class ProductDetails extends Component {
 					<h2>{item.name}</h2>
 				</Row>
 				<Row >
-					<Col  xs={6} md={4} lg={6}>
+					<Col xs={6} md={4} lg={6}>
 						<Carousel>
 							<Carousel.Item>
 								<img className="d-block w-100" src={item.image}
@@ -51,18 +51,19 @@ class ProductDetails extends Component {
 						</Row>
 						<Row >
 							<ul>
-								<li style={{fontSize: 24}}>Price</li>
-								<li style={{fontSize: 26, color: 'blue'}}>${item.price}</li>
-								<li style={{fontSize: 14, color: 'red'}}>Original $ {item.price+10}</li>
+								<li style={{ fontSize: 20 }}>Price</li>
+								<li style={{ fontSize: 26, color: 'blue' }}>${item.price}</li>
+								<li style={{ fontSize: 14, color: 'red'}}>Original $ {item.price + 10}</li>
 							</ul>
 						</Row>
 						<Row>
-							<Button variant="success">Add to Cart</Button>
+							<Button className="addToCart" variant="success">Add to Cart</Button>
 						</Row>
 					</Col>
 				</Row>
-				<Row >
-					<p>{item.desc}</p>
+				<Row className="desc">
+					<div style={{fontSize: '1.2em', fontWeight: 'bold'}}>{item.longTitle}</div>
+					{item.desc}
 				</Row>
 			</Container>
 		)
