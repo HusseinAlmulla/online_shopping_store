@@ -6,7 +6,7 @@
 	padding-right:10px;
 }
 
-.btn {	
+.btnSubmit {	
 	margin-left: 40%;
 	margin-bottom: 10px;
 }
@@ -26,7 +26,7 @@
 
 @font-face{
     font-family: 'AnonymousPro-Bold', cursive;;
-    src: local('AnonymousPro'), url('../fonsts/AnonymousPro-Bold.ttf').format('ttf');
+    src: local('AnonymousPro'), url('../fonsts/AnonymousPro-Bold.ttf');
 }
 
 .line{
@@ -42,3 +42,17 @@
 	width: 50%;
 	float: left;
 }
+
+.inputError {
+	border: 2px solid red;
+  }
+
+  .errorMessage{
+	  color: red;
+	  font-weight: 18;
+	  font-style: italic;
+	  font-weight: bold;
+	  border-color: black;
+	  text-align: center;
+	  margin: 20px;
+  }
