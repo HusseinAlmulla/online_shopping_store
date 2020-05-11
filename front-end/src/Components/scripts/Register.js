@@ -16,10 +16,9 @@ class Register extends Component {
 			date_birth: '',
 			errorMessage: '',
 			confirm: false,
-			ready: false,
+			resError:'',
 		}
 	}
-
 
 	onUsernameChange = (event) => {
 		this.setState({ username: event.target.value });
@@ -42,22 +41,25 @@ class Register extends Component {
 	onPasswordChange = (event) => {
 		this.setState({ password: event.target.value });
 	}
+	enableConfirmPass = () => {
+		document.getElementById("confirmPass").disabled = false;
+	}
 	onPasswordConfirmChange = (event) => {
-		let confirmPass = event.target.value;
-		if (this.state.password !== confirmPass) {
+		if (this.state.password !== event.target.value) {
 			this.setState({
-				errorMessage: 'password does not match',
+				errorMessage: 'Password does not match',
 				confirm: false,
 			});
+			document.getElementById("confirmPass").classList.add("inputError");
 		}
 		else {
 			this.setState({
 				errorMessage: '',
 				confirm: true,
 			});
+			document.getElementById("confirmPass").classList.remove("inputError");
 		}
 	}
-
 	isFormValidate() {
 		const { first_name, last_name, username, email, password, confirm } = this.state;
 
@@ -68,18 +70,15 @@ class Register extends Component {
 			return true;
 		}
 	}
-
 	isEmpty(text) {
 		if (text.trim() === '') {
 			return true;
 		}
 	}
-
 	onSubmitForm = (event) => {
-		event.preventDefault();
 		if (this.isFormValidate()) {
+			event.preventDefault();
 			const { first_name, last_name, username, email, password, date_birth } = this.state;
-			console.log(this.state);
 			fetch('http://localhost:3000/register', {
 				method: 'post',
 				headers: { 'Content-Type': 'application/json' },
@@ -92,22 +91,25 @@ class Register extends Component {
 					date_birth: date_birth,
 				})
 			}).then(response => response.json())
-				.then(user => {
-					if (user) {
-						this.props.setUser(user);
+				.then(res => {
+					if (res.id) {
+						this.props.setUser(res);
 						this.props.history.push('/');
+					}
+					else if(res.error) {
+						this.setState({
+							errorMessage : res.error
+						})
 					}
 				})
 		}
-		else {
-
-		}
 	}
-
 
 	render() {
 		return (
+			
 			<Container className=" div container">
+			<div className="errorMessage">{this.state.errorMessage}</div>
 				<Col lg={6} md={8} className="col">
 
 					<h3 className="h3">Register</h3>
@@ -134,12 +136,12 @@ class Register extends Component {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" required onChange={this.onPasswordChange} />
+							<Form.Control type="password" required onChange={this.onPasswordChange} onBlur={this.enableConfirmPass} />
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Confirm password</Form.Label>
-							<Form.Control type="password" onChange={this.onPasswordConfirmChange} required />
-							<Form.Text>{this.state.errorMessage}</Form.Text>
+							<Form.Control id="confirmPass" type="password" onBlur={this.onPasswordConfirmChange} required disabled />
+							{/* <Form.Text>{this.state.errorMessage}</Form.Text> */}
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Date of birth</Form.Label>
@@ -148,13 +150,13 @@ class Register extends Component {
 						<Form.Group id="formGridCheckbox">
 							<Form.Check type="checkbox" label="Accept terms and conditions" />
 						</Form.Group>
-						<Button className="btn" variant="primary" type="submit" onClick={this.onSubmitForm}>
+						<Button className="btnSubmit" variant="primary" type="submit" onClick={this.onSubmitForm}>
 							Submit
   						</Button>
 					</Form>
 				</Col>
 			</Container>
-
+			
 		);
 	}
 
