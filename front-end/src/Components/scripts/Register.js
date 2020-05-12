@@ -19,7 +19,6 @@ class Register extends Component {
 			resError:'',
 		}
 	}
-
 	onUsernameChange = (event) => {
 		this.setState({ username: event.target.value });
 	}
@@ -104,7 +103,6 @@ class Register extends Component {
 				})
 		}
 	}
-
 	render() {
 		return (
 			
@@ -159,8 +157,6 @@ class Register extends Component {
 			
 		);
 	}
-
-
 }
 
 export default Register;

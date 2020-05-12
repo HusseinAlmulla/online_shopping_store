@@ -38,8 +38,8 @@ app.post('/register', (req, res) => {
 			let reg = (/Key\s\(([a-z]+)\)=(\(.*\).*)/)
 			let match = reg.exec(err.detail);
 			let msg = "The ".concat(match[1], " ", match[2])
-			error = { "error": msg};
-			res.status(400).json(error );
+			error = { "error": msg };
+			res.status(400).json(error);
 		});
 })
 

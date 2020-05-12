@@ -7,6 +7,7 @@ import Footer from './Components/scripts/Footer.js';
 import LandingPage from './Components/scripts/LandingPage.js';
 import Register from './Components/scripts/Register.js';
 import ProductDetails from './Components/scripts/ProductDetails.js';
+import CatagoryMenu from './Components/scripts/CategoryMenu.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -51,6 +52,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <NavBar username={this.state.user.username}/>
+          <CatagoryMenu />
           <Route exact path="/register" render={(props) => <Register {...props} setUser={this.setUser} />} />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/products" render={(props) => <CardsList {...props} data={data} />} />
