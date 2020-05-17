@@ -11,7 +11,6 @@ import CatagoryMenu from './Components/scripts/CategoryMenu.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import data from './data.json';
 
 class App extends Component {
   constructor(props) {
@@ -51,13 +50,13 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <NavBar username={this.state.user.username}/>
+          <NavBar username={this.state.user.username} />
           <CatagoryMenu />
           <Route exact path="/register" render={(props) => <Register {...props} setUser={this.setUser} />} />
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/products" render={(props) => <CardsList {...props} data={data} />} />
-          <Route exact path="/products/:id" component={ProductDetails} />
-          <Footer />
+          <Route exact path="/products" render={(props) => <CardsList {...props} /> } />
+            <Route exact path="/products/:id" component={ProductDetails} />
+            <Footer />
         </BrowserRouter>
       </div >
     );

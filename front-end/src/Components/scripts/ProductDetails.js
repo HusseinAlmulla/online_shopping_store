@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from '../../data.json';
 import { Container, Row, Col, Carousel, Button } from 'react-bootstrap';
 import '../styles/ProductDetails.css';
 
@@ -12,15 +11,7 @@ class ProductDetails extends Component {
 			selected_sized: '',
 		};
 	}
-	//TODO: replcase this with one that search the database
-	componentDidMount() {
-		data.forEach(element => {
-			var currentId = element.id.toString();
-			if (currentId === this.props.match.params.id) {
-				this.setState({ item: element })
-			}
-		});
-	}
+	
 
 	setSize=(size)=>{
 		this.setState({
@@ -51,21 +42,21 @@ class ProductDetails extends Component {
 			
 			<Container className="justify-content-md-center">
 				<Row >
-					<h2>{item.name}</h2>
+					<h2>{item.short_title}</h2>
 				</Row>
 				<Row >
 					<Col xs={6} md={4} lg={6}>
 						<Carousel className="carousel slide">
 							<Carousel.Item>
-								<img className="d-block w-75" src={item.image}
+								<img className="d-block w-75" src={item.image_url}
 									alt="First slide" />
 							</Carousel.Item>
 							<Carousel.Item>
-								<img className="d-block w-75" src={item.image}
+								<img className="d-block w-75" src={item.image_url}
 									alt="second slide" />
 							</Carousel.Item>
 							<Carousel.Item>
-								<img className="d-block w-75" src={item.image}
+								<img className="d-block w-75" src={item.image_url}
 									alt="Third slide" />
 							</Carousel.Item>
 						</Carousel>
@@ -94,8 +85,8 @@ class ProductDetails extends Component {
 					</Col>
 				</Row>
 				<Row className="desc">
-					<div style={{ fontSize: '1.2em', fontWeight: 'bold' }}>{item.longTitle}</div>
-					{item.desc}
+					<div style={{ fontSize: '1.2em', fontWeight: 'bold' }}>{item.long_title}</div>
+					{item.description}
 				</Row>
 			</Container>
 		)

@@ -4,12 +4,8 @@
     display: none !important;
 }
 
-#nav-dropdown:hover{
-    display: block;
-}
-
 .itemSize {
-    width: 15em;
+    width: 14.2vw;
 }
 
 #nav-dropdown:hover{
