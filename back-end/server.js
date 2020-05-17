@@ -38,9 +38,32 @@ app.post('/register', (req, res) => {
 			let reg = (/Key\s\(([a-z]+)\)=(\(.*\).*)/)
 			let match = reg.exec(err.detail);
 			let msg = "The ".concat(match[1], " ", match[2])
-			error = { "error": msg};
-			res.status(400).json(error );
+			error = { "error": msg };
+			res.status(400).json(error);
 		});
+})
+
+
+app.post('/products/category', (req, res) => {
+	oss_db('category').where({
+		main: req.body.main,
+		sub: req.body.sub
+	}).select('id')
+		.then(category_id => oss_db('products')
+			.where({ category: category_id[0].id, })
+			.select('*').then(items => {
+				items[0]
+					? res.status(200).json(items)
+					: res.status(200).json([{error: 'No results found'}])
+			}))
+		.catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
+})
+
+
+app.post('/products', (req, res) => {
+	oss_db('products').select('*')
+		.then(items => res.status(200).json(items))
+		.catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
 })
 
 

@@ -1,0 +1,16 @@
+
+/* This to remove the arrow (carat) from the dropdoun1   */
+#nav-dropdown:after{
+    display: none !important;
+}
+
+.itemSize {
+    width: 14.2vw;
+}
+
+#nav-dropdown:hover{
+    background-color: #54DDDA;
+    color: white;
+}
+
+

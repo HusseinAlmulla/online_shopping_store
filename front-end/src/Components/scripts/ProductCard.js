@@ -31,17 +31,17 @@ class ProductCard extends React.Component {
 						component="img"
 						alt="Contemplative Reptile"
 						height="300"
-						image={item.image}
+						image={item.image_url}
 						title="Contemplative Reptile"
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
 							<Link to={`/products/${item.id}`}>
-								{item.name}
+								{item.short_title}
 							</Link>
 						</Typography>
 						<Typography variant="body2" color="textSecondary" component="p">
-							{item.longTitle}
+							{item.long_title}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
