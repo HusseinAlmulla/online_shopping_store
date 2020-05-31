@@ -45,3 +45,56 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.register
     OWNER to postgres;
+
+
+
+
+---------------------------
+---------------------------
+
+-- Table: public.category
+
+-- DROP TABLE public.category;
+
+CREATE TABLE public.category
+(
+    id integer NOT NULL DEFAULT nextval('category_id_seq'::regclass),
+    main character varying COLLATE pg_catalog."default" NOT NULL,
+    sub character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT category_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.category
+    OWNER to postgres;
+
+
+---------------------------------
+---------------------------------
+
+
+-- Table: public.products
+
+-- DROP TABLE public.products;
+
+CREATE TABLE public.products
+(
+    id integer NOT NULL DEFAULT nextval('products_id_seq'::regclass),
+    short_title character varying COLLATE pg_catalog."default" NOT NULL,
+    long_title character varying COLLATE pg_catalog."default" NOT NULL,
+    description character varying COLLATE pg_catalog."default" NOT NULL,
+    price double precision NOT NULL,
+    category integer NOT NULL,
+    image_url character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT products_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.products
+    OWNER to postgres;
