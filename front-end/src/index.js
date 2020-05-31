@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunkMiddleWare from 'redux-thunk';
+import {searchItemsReducer, requestSearchItemsReducer} from './Components/Reducers.js';
+import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
-//fonts
+import './index.css';
 import './Components/fonsts/AnonymousPro-Bold.ttf'
+
+const rootReducers = combineReducers({searchItemsReducer, requestSearchItemsReducer});
+const store = createStore(rootReducers, applyMiddleware(thunkMiddleWare));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-
 import CardsList from './Components/scripts/CardsList.js';
 import NavBar from './Components/scripts/NavBar';
 import Footer from './Components/scripts/Footer.js';
@@ -8,9 +7,13 @@ import LandingPage from './Components/scripts/LandingPage.js';
 import Register from './Components/scripts/Register.js';
 import ProductDetails from './Components/scripts/ProductDetails.js';
 import CatagoryMenu from './Components/scripts/CategoryMenu.js';
+import Search from './Components/scripts/Search.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -54,14 +57,15 @@ class App extends Component {
           <CatagoryMenu />
           <Route exact path="/register" render={(props) => <Register {...props} setUser={this.setUser} />} />
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/products" render={(props) => <CardsList {...props} /> } />
-            <Route exact path="/products/:id" component={ProductDetails} />
-            <Footer />
+          <Route exact path="/products" render={(props) => <CardsList {...props} />} />
+          <Route exact path="/products/search" component={Search} />
+          <Route exact path="/products/items/:id" component={ProductDetails} />
+          <Footer />
+
         </BrowserRouter>
       </div >
     );
   }
 }
-
 
 export default App;
