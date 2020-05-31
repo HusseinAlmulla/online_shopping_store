@@ -93,7 +93,6 @@ class Register extends Component {
 				.then(res => {
 					if (res.id) {
 						this.props.setUser(res);
-						this.props.history.push('/');
 					}
 					else if(res.error) {
 						this.setState({

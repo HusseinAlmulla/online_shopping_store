@@ -43,7 +43,6 @@ app.post('/register', (req, res) => {
 		});
 })
 
-
 app.post('/products/category', (req, res) => {
 	oss_db('category').where({
 		main: req.body.main,
@@ -60,10 +59,17 @@ app.post('/products/category', (req, res) => {
 })
 
 
-app.post('/products', (req, res) => {
-	oss_db('products').select('*')
-		.then(items => res.status(200).json(items))
-		.catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
+app.get('/products/search', (req, res) => {
+	const keyword = '%'.concat(req.query.q).concat('%');
+	
+	oss_db('products')
+	.where('short_title', 'like', keyword)
+	.orWhere('long_title', 'like', keyword)
+	.orWhere('description', 'like', keyword)
+	.select('*').then(items => {items[0]
+		? res.status(200).json(items)
+		: res.status(200).json([{error: 'No results found'}])
+	}).catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
 })
 
 

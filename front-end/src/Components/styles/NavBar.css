@@ -1,5 +1,6 @@
 .bg-custom {
-	background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+	/* background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); */
+	background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
 }
 
 .link{
@@ -7,6 +8,7 @@
 	font-family: AnonymousPro-Bold;
 	font-size: 20px;
 	margin: 5px;
+	
 }
 
 
@@ -23,3 +25,4 @@
 	border-bottom:1px solid teal;
 	border-top:1px solid teal;
 }
+

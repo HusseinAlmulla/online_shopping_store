@@ -36,7 +36,7 @@ class ProductCard extends React.Component {
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
-							<Link to={`/products/${item.id}`}>
+							<Link to={`/products/item/${item.id}`}>
 								{item.short_title}
 							</Link>
 						</Typography>
