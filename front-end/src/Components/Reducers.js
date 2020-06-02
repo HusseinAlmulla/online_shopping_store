@@ -31,3 +31,5 @@ export const requestSearchItemsReducer = (state = intialItemsState, action = {})
 			return state;
 	}
 }
+
+

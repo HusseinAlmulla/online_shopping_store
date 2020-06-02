@@ -13,7 +13,7 @@ const SearchBox = ({ onSearchChange, onRequestSearch }) => {
 			<InputGroup.Append>
 				<Button variant="outline-secondary" onClick={() => {
 					onRequestSearch();
-					history.push("/products/search");
+					history.push("/products");
 				}}>Search</Button>
 			</InputGroup.Append>
 		</InputGroup>

@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+
+import { requestCategoryItemsAction } from '../Actions.js';
 import '../styles/CategoryMenu.css';
-import { Link } from 'react-router-dom';
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onRequestCategory: (main, sub) => dispatch(requestCategoryItemsAction(main, sub))
+	}
+}
+
 class CatagoryMenu extends Component {
 
 	constructor(props) {
@@ -17,118 +27,46 @@ class CatagoryMenu extends Component {
 		};
 	}
 
+	getItems = (main, sub) => {
+		this.props.onRequestCategory(main, sub);
+		this.props.history.push("/products/");
+	}
+
 	render() {
 		return (
 			<div>
 
 				<Nav justify variant="tabs" defaultActiveKey="/home" as="ul" >
 
-					<NavDropdown title="Clothing" id="nav-dropdown"
-						show={this.state.nav1}
-						onMouseEnter={() => this.setState({ nav1: true })}
-						onMouseLeave={() => this.setState({ nav1: false })}
-					>
-						<NavDropdown.Item className="itemSize" eventKey="1.1">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Clothing',
-									sub: 'Top'
-								}
-							}}> Top </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="1.2">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Clothing',
-									sub: 'Bottom'
-								}
-							}}>Bottom </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="1.3">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Clothing',
-									sub: 'Dress'
-								}
-							}}> Dress </Link>
-						</NavDropdown.Item>
-					</NavDropdown>
+					{this.createCategoryMenuTab(this.state.nav1, "nav1", "Clothing", ["Top", "Bottom", "Dress"])}
 
-					<NavDropdown title="Bags" id="nav-dropdown"
-						show={this.state.nav2}
-						onMouseEnter={() => this.setState({ nav2: true })}
-						onMouseLeave={() => this.setState({ nav2: false })}
-					>
-						<NavDropdown.Item className="itemSize" eventKey="2.1">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Bags',
-									sub: 'Hand Bag'
-								}
-							}}> Hand Bag </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="2.2">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Bags',
-									sub: 'Shoulder Bag'
-								}
-							}}>Shoulder Bag </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="2.3">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Bags',
-									sub: 'Backpack'
-								}
-							}}> Backpack </Link>
-						</NavDropdown.Item>
-					</NavDropdown>
+					{this.createCategoryMenuTab(this.state.nav2, "nav2", "Bags", ["Hand Bag", "Shoulder Bag", "Backpack"])}
 
-					<NavDropdown title="Accessories" id="nav-dropdown"
-						show={this.state.nav3}
-						onMouseEnter={() => this.setState({ nav3: true })}
-						onMouseLeave={() => this.setState({ nav3: false })}
-					>
-						<NavDropdown.Item className="itemSize" eventKey="3.1">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Accessories',
-									sub: 'Belts'
-								}
-							}}> Belts </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="3.2">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Accessories',
-									sub: 'Glasses'
-								}
-							}}>Glasses </Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item eventKey="3.3">
-							<Link to={{
-								pathname: '/products',
-								state: {
-									main: 'Accessories',
-									sub: 'Neckles'
-								}
-							}}> Neckles </Link>
-						</NavDropdown.Item>
-					</NavDropdown>
+					{this.createCategoryMenuTab(this.state.nav3, "nav3", "Accessories", ["Glasses", "Neckles", "Belts"])}
 
 				</Nav >
-			</div>
+			</div >
 		);
+	}
+
+	createCategoryMenuTab(navState, navNum, main, sub = []) {
+		return <NavDropdown title={main}
+			id="nav-dropdown"
+			show={navState}
+			onMouseEnter={() => this.setState({ [navNum]: true })}
+			onMouseLeave={() => this.setState({ [navNum]: false })}>
+			{
+				sub.map(subC =>
+					<NavDropdown.Item
+						className="itemSize"
+						eventKey={subC}
+						onClick={() => this.getItems(main, subC)}>
+						{subC}
+					</NavDropdown.Item>
+				)
+			}
+		</NavDropdown>;
 	}
 }
 
-export default CatagoryMenu;
+export default withRouter(connect(null, mapDispatchToProps)(CatagoryMenu));

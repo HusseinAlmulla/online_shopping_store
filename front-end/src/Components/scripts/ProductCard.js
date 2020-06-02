@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import '../styles/ProductCard.css'
 
 class ProductCard extends React.Component {
+
 	classes = makeStyles({
 		root: {
 			maxWidth: 345,
@@ -36,7 +37,11 @@ class ProductCard extends React.Component {
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
-							<Link to={`/products/item/${item.id}`}>
+							<Link to={{
+								pathname: `/products/item/${item.id}`,
+								state:{item:item}
+							}}
+							>
 								{item.short_title}
 							</Link>
 						</Typography>

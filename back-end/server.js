@@ -44,6 +44,7 @@ app.post('/register', (req, res) => {
 })
 
 app.post('/products/category', (req, res) => {
+	console.log(req.body);
 	oss_db('category').where({
 		main: req.body.main,
 		sub: req.body.sub

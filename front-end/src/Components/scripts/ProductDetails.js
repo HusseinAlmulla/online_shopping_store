@@ -7,13 +7,11 @@ class ProductDetails extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			item: '',
 			selected_sized: '',
 		};
 	}
-	
 
-	setSize=(size)=>{
+	setSize = (size) => {
 		this.setState({
 			selected_sized: document.getElementById(size).textContent
 		});
@@ -23,23 +21,22 @@ class ProductDetails extends Component {
 
 		document.getElementById("m").style.backgroundColor = "white";
 		document.getElementById("m").style.color = "#b8adad";
-		
+
 		document.getElementById("l").style.backgroundColor = "white";
 		document.getElementById("l").style.color = "#b8adad";
-		
+
 		document.getElementById("xl").style.backgroundColor = "white";
 		document.getElementById("xl").style.color = "#b8adad";
 
 		document.getElementById(size).style.backgroundColor = "#b8adad";
 		document.getElementById(size).style.color = "white";
 
-		
+
 	}
-	
+
 	render() {
-		const item = this.state.item;
+		const item = this.props.location.state.item;
 		return (
-			
 			<Container className="justify-content-md-center">
 				<Row >
 					<h2>{item.short_title}</h2>
@@ -71,12 +68,12 @@ class ProductDetails extends Component {
 						</Row>
 						<Row >
 							<div className="sizeSection">
-							<div >Sizes</div>
-								<label id="s" className="btn btn-outline-info sizeBtn" title="Small" onClick={() =>this.setSize('s')} >SMALL</label>
-								<label id="m" className="btn btn-outline-info sizeBtn" title="MEDIUM" onClick={() =>this.setSize('m')}>MEDIUM</label>
-								<label id="l" className="btn btn-outline-info sizeBtn" title="LARGE" onClick={() =>this.setSize('l')}>LARGE</label>
-								<label id="xl" className="btn btn-outline-info sizeBtn" title="X-LARGE" onClick={() =>this.setSize('xl')}>X-LARGE</label>
-								
+								<div >Sizes</div>
+								<label id="s" className="btn btn-outline-info sizeBtn" title="Small" onClick={() => this.setSize('s')} >SMALL</label>
+								<label id="m" className="btn btn-outline-info sizeBtn" title="MEDIUM" onClick={() => this.setSize('m')}>MEDIUM</label>
+								<label id="l" className="btn btn-outline-info sizeBtn" title="LARGE" onClick={() => this.setSize('l')}>LARGE</label>
+								<label id="xl" className="btn btn-outline-info sizeBtn" title="X-LARGE" onClick={() => this.setSize('xl')}>X-LARGE</label>
+
 							</div>
 						</Row>
 						<Row>

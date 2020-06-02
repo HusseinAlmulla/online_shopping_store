@@ -6,9 +6,6 @@ import { setSearchFieldAction, requestSearchItemsAction } from '../Actions.js';
 import SearchBox from './SearchBox.js';
 import '../styles/NavBar.css';
 
-
-
-
 const mapStateToProps = (state) => {
   return {
     searchField: state.searchItemsReducer.searchField,
@@ -30,9 +27,13 @@ class NavBar extends Component {
         <Navbar.Brand href="/">LOGO</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="mr-auto">
             <Nav.Link className="link" href="/">
               Home
+            </Nav.Link>
+            <Nav.Link className="link" href="/profile">
+              Profile
             </Nav.Link>
           </Nav>
 

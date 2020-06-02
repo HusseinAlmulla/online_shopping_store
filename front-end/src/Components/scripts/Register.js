@@ -107,7 +107,7 @@ class Register extends Component {
 			
 			<Container className=" div container">
 			<div className="errorMessage">{this.state.errorMessage}</div>
-				<Col lg={6} md={8} className="col">
+				<Col lg={6} md={8} className="col_register">
 
 					<h3 className="h3">Register</h3>
 					<hr className="line" />

@@ -1,0 +1,30 @@
+.profile_image {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	width: 100% !important;
+	/* margin: 5% 0px; */
+	
+} 
+
+.draw_line {
+	background-color: blue;
+	height: 1px;	
+}
+
+
+.col_user_profile_left {	
+	border-radius: 10px;
+	background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+	/* background-color: gainsboro; */
+}
+
+
+.col_user_profile_middle {	
+	border-radius: 10px;
+	background-color: #19B5E0;
+}
+
+.tab_title {
+	text-align: center;
+}
