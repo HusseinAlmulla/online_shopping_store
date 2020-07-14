@@ -2,23 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
-import thunkMiddleWare from 'redux-thunk';
-import {searchItemsReducer, requestSearchItemsReducer} from './Components/Reducers.js';
-import App from './App';
+import {PersistGate} from 'redux-persist/integration/react';
 
+import App from './App';
+import {store, persistor} from './Components/store.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './Components/fonsts/AnonymousPro-Bold.ttf'
 
-const rootReducers = combineReducers({searchItemsReducer, requestSearchItemsReducer});
-const store = createStore(rootReducers, applyMiddleware(thunkMiddleWare));
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <PersistGate persistor={persistor}>
       <App />
-    </Provider>
+      </PersistGate>
+    </Provider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -32,4 +32,22 @@ export const requestSearchItemsReducer = (state = intialItemsState, action = {})
 	}
 }
 
+const intialUserLoginState = {
+	user: [],
+	isPending: true,
+	error: ''
+}
+
+export const requestUserLoginReducer = (state = intialUserLoginState, action = {}) => {
+	switch (action.type) {
+		case CONSTANTS.REQUEST_ITEMS_PENDING:
+			return { ...state, isPending: true };
+		case CONSTANTS.REQUEST_ITEMS_SUCCESS:
+			return { ...state, user: action.payload, isPending: false };
+		case CONSTANTS.REQUEST_ITEMS_FAILED:
+			return { ...state, error: action.payload, isPending: false };
+		default:
+			return state;
+	}
+}
 

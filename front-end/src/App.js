@@ -8,9 +8,11 @@ import Register from './Components/scripts/Register.js';
 import ProductDetails from './Components/scripts/ProductDetails.js';
 import CatagoryMenu from './Components/scripts/CategoryMenu.js';
 import UserProfile from './Components/scripts/UserProfile.js';
+import EditUserProfile from './Components/scripts/EditUserProfile.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Login from './Components/scripts/Login.js';
 
 class App extends Component {
   constructor(props) {
@@ -50,14 +52,16 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-        
-          <NavBar username={this.state.user.username} />
+
+          <NavBar/>
           <CatagoryMenu />
           <Route exact path="/register" render={(props) => <Register {...props} setUser={this.setUser} />} />
+          <Route exact path='/login' component={Login} />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/products" render={(props) => <CardsList {...props} />} />
           <Route exact path="/products/item/:id" component={ProductDetails} />
-          <Route exact path='/profile' component={UserProfile}/>
+          <Route exact path='/profile' component={UserProfile} />
+          <Route exact path='/editprofile' component={EditUserProfile} />
           <Footer />
 
         </BrowserRouter>

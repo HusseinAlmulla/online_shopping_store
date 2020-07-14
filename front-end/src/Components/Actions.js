@@ -27,7 +27,7 @@ export const requestSearchItemsAction = (keyword) => (dispatch) => {
 }
 
 export const requestCategoryItemsAction = (main, sub) => (dispatch) => {
-	
+
 	dispatch({
 		type: CONSTANTS.REQUEST_ITEMS_PENDING,
 	});
@@ -58,3 +58,26 @@ const requestFailed = (error) => ({
 	type: CONSTANTS.REQUEST_ITEMS_FAILED,
 	payload: error
 })
+
+export const requestUserLoginAction = (email, password) => (dispatch) => {
+
+	dispatch({
+		type: CONSTANTS.REQUEST_ITEMS_PENDING,
+	});
+
+	fetch('http://localhost:3000/login', {
+		method: 'post',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			email: email,
+			password: password,
+		})
+	}).then(response => response.json())
+		.then(user => {
+			if (user[0].id) {
+				dispatch(requestSuceed(user));
+			}
+			else if (user[0].error)
+				dispatch(requestFailed(user[0].error));
+		}).catch(err => dispatch(requestFailed(err)))
+}

@@ -43,6 +43,29 @@ app.post('/register', (req, res) => {
 		});
 })
 
+
+app.post('/login', (req, res) => {
+
+	console.log(req.body)
+	oss_db('register').where({
+		email: req.body.email,
+		password: req.body.password
+	}).select('*')
+		.then(user => {
+			user[0]
+				? res.status(200).json(user)
+				: res.status(200).json([{ error: 'No results found' }])
+		})
+		.catch(err => {
+			// this regular expression match the return error.
+			let reg = (/Key\s\(([a-z]+)\)=(\(.*\).*)/)
+			let match = reg.exec(err.detail);
+			let msg = "The ".concat(match[1], " ", match[2])
+			error = { "error": msg };
+			res.status(400).json(error);
+		});
+})
+
 app.post('/products/category', (req, res) => {
 	console.log(req.body);
 	oss_db('category').where({
@@ -54,24 +77,35 @@ app.post('/products/category', (req, res) => {
 			.select('*').then(items => {
 				items[0]
 					? res.status(200).json(items)
-					: res.status(200).json([{error: 'No results found'}])
+					: res.status(200).json([{ error: 'No results found' }])
 			}))
-		.catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
+		.catch(err => res.status(400).json([{ error: 'Somthing went wrong\n' + err }]))
 })
-
 
 app.get('/products/search', (req, res) => {
 	const keyword = '%'.concat(req.query.q).concat('%');
-	
+
 	oss_db('products')
-	.where('short_title', 'like', keyword)
-	.orWhere('long_title', 'like', keyword)
-	.orWhere('description', 'like', keyword)
-	.select('*').then(items => {items[0]
-		? res.status(200).json(items)
-		: res.status(200).json([{error: 'No results found'}])
-	}).catch(err => res.status(400).json([{error: 'Somthing went wrong\n' + err}]))
+		.where('short_title', 'like', keyword)
+		.orWhere('long_title', 'like', keyword)
+		.orWhere('description', 'like', keyword)
+		.select('*').then(items => {
+			items[0]
+				? res.status(200).json(items)
+				: res.status(200).json([{ error: 'No results found' }])
+		}).catch(err => res.status(400).json([{ error: 'Somthing went wrong\n' + err }]))
 })
 
+app.post('/profile/:userid', (req, res) => {
+	console.log(req.params.userid);
+	oss_db('user_profile').where({
+		user_register_id: req.params.userid.replace(":",""),
+	}).select('*').then(items => {
+			items[0]
+				? res.status(200).json(items)
+				: res.status(200).json([{ error: 'No results found' }])
+		})
+		.catch(err => res.status(400).json([{ error: 'Somthing went wrong\n' + err }]))
+})
 
 app.listen(3000, () => console.log("The server running on port 3000"));
